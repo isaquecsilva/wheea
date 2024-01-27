@@ -1,11 +1,18 @@
 const themekit = {
 	lightmode: '#fff',
 	darkmode: '#111',
-	theme: '',
 }
 
-themekit.theme = themekit.darkmode;
+function getUserTheme() {
+	return localStorage.getItem("apptheme")
+}
+
+function setUserTheme(theme) {
+	localStorage.setItem("apptheme", theme)
+}
 
 export {
-	themekit
+	themekit,
+	getUserTheme,
+	setUserTheme
 }
