@@ -15,10 +15,11 @@
 		setUserTheme(theme)
 	}
 </script>
-
-<button on:click={changeTheme}>
-	<img src={icon} {...size} />
-</button>
+<div>
+	<button on:click={changeTheme}>
+		<img src={icon} {...size} />
+	</button>
+</div>
 
 <style>
 	button {

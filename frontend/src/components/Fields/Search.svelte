@@ -55,10 +55,9 @@
 		height: 2em;
 		width: 66vw;
 		border-radius: 6px;
-		border: none;
+		border: 1px solid slategray;
 		outline: none;
 		padding: 0px 12px;
-		box-shadow: inset 0px 0px 8px #777;
 		color: #444;
 	}
 </style>

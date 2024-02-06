@@ -12,6 +12,8 @@ import (
 var assets embed.FS
 
 func main() {
+	println("Running")
+
 	// Create an instance of the app structure
 	app := NewWheeaApp()
 
@@ -20,6 +22,8 @@ func main() {
 		Title:  "wheea",
 		Width:  344,
 		Height: 370,
+		MaxWidth: 600,
+		MaxHeight: 600,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
