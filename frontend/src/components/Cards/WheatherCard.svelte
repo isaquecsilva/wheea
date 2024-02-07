@@ -2,11 +2,15 @@
 	import { onMount } from 'svelte'
 
 	export let theme;
-	export let image;
+	export let image = '';
 </script>
 
 <div style="--wheather-card-theme: {theme}">
-	<img src={image} width="160" height="160" alt="wheather-image" />
+	{#if image == ''}
+		<span>No Wheather Informations Available</span>
+	{:else}
+		<img src={image} width="160" height="160" alt="wheather-image" />
+	{/if}
 </div>
 
 <style type="text/css">
@@ -19,5 +23,9 @@
 		align-items: center;
 		justify-content: center;
 		margin: 0;
+	}
+
+	span {
+		color: dimgray;
 	}
 </style>

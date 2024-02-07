@@ -52,6 +52,7 @@
 		grid-row-end: 2;
 		position: relative;
 		font-size: 16px;
+		font-weight: 300;
 		height: 2em;
 		width: 66vw;
 		border-radius: 6px;
@@ -59,5 +60,9 @@
 		outline: none;
 		padding: 0px 12px;
 		color: #444;
+	}
+
+	input::placeholder {
+		color: #ccc;
 	}
 </style>

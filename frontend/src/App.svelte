@@ -3,7 +3,6 @@
   import Theme from './components/Buttons/Theme.svelte'
   import WheatherCard from './components/Cards/WheatherCard.svelte'
   import { themekit, getUserTheme } from './theme.js'
-  import wheather from './assets/images/illustrations/sun_rain.png'
 
   export let theme = getUserTheme() || themekit.darkmode
   $: document.body.style.backgroundColor = theme;
@@ -11,7 +10,7 @@
 
 <main>
   <Theme id="theme" bind:theme />
-  <WheatherCard id="card" bind:theme image={wheather}/>
+  <WheatherCard id="card" bind:theme image="" />
   <Search id="search" bind:theme />
 </main>
 

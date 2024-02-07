@@ -5,6 +5,9 @@ import (
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
+	_"github.com/wailsapp/wails/v2/pkg/options/mac"
+	_"github.com/wailsapp/wails/v2/pkg/options/linux"
+	"github.com/wailsapp/wails/v2/pkg/options/windows"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 )
 
@@ -12,18 +15,22 @@ import (
 var assets embed.FS
 
 func main() {
-	println("Running")
-
 	// Create an instance of the app structure
 	app := NewWheeaApp()
 
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:  "wheea",
+		MinWidth: 344,
+		MinHeight: 370,
 		Width:  344,
 		Height: 370,
 		MaxWidth: 600,
 		MaxHeight: 600,
+		Fullscreen: false,
+		Windows: &windows.Options{
+			IsZoomControlEnabled: false,
+		},
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
