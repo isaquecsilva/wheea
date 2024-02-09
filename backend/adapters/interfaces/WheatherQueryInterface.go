@@ -1,6 +1,6 @@
 package interfaces
 
-import "wheea/core/entities"
+import "wheea/backend/core/entities"
 
 type WheatherQueryInterface interface {
 	Query(entities.WheatherQuery) entities.WheatherQueryApiResponse

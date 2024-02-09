@@ -1,8 +1,8 @@
 package app
 
 import (
-	"wheea/core/entities"
-	"wheea/adapters/interfaces"
+	"wheea/backend/adapters/interfaces"
+	"wheea/backend/core/entities"
 )
 
 type WheatherQueryService struct {

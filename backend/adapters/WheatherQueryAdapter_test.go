@@ -2,7 +2,7 @@ package adapters
 
 import (
 	"testing"
-	"wheea/core/entities"
+	"wheea/backend/core/entities"
 
 	"github.com/stretchr/testify/assert"
 )

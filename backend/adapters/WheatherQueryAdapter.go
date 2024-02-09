@@ -3,7 +3,7 @@ package adapters
 import (
 	"encoding/json"
 	"net/http"
-	"wheea/core/entities"
+	"wheea/backend/core/entities"
 
 	"github.com/innotechdevops/openmeteo"
 )

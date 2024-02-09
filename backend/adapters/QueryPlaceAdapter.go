@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"wheea/core/entities"
+	"wheea/backend/core/entities"
 )
 
 type QueryPlaceAdapter struct {

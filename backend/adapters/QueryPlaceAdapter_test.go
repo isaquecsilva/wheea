@@ -3,7 +3,7 @@ package adapters
 import (
 	"net/http"
 	"testing"
-	"wheea/core/entities"
+	"wheea/backend/core/entities"
 
 	"github.com/stretchr/testify/assert"
 )

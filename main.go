@@ -3,8 +3,8 @@ package main
 import (
 	"embed"
 
-	"wheea/adapters"
-	"wheea/core/app"
+	"wheea/backend/adapters"
+	"wheea/backend/core/app"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
