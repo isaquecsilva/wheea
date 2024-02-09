@@ -12,20 +12,22 @@ type QueryPlaceApiResponse struct {
 }
 
 type WheatherQueryApiResponse struct {
-	Code    int
-	Results []struct {
+	Code   int
+	Result struct {
 		Latitude  float32
 		Longitude float32
 		Today     struct {
+			WeatherType    uint
 			WindSpeed      uint
-			MaxTemperature uint
-			MinTemperature uint
+			Temperature    int
+			MaxTemperature int
+			MinTemperature int
 			Precipitation  uint
 		}
 		NextDays [6]struct {
-			WindSpeed      uint
-			MaxTemperature uint
-			MinTemperature uint
+			WeatherType    uint
+			MaxTemperature int
+			MinTemperature int
 			Precipitation  uint
 		}
 	}
