@@ -12,8 +12,8 @@ type QueryPlaceApiResponse struct {
 }
 
 type WheatherQueryApiResponse struct {
-	Code   int
-	Result []struct {
+	Code    int
+	Results []struct {
 		Latitude  float32
 		Longitude float32
 		Today     struct {
