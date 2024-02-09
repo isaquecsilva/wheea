@@ -1,10 +1,10 @@
 package entities
 
 type WheatherQuery struct {
-	Lat, Lon float64
+	Lat, Lon float32
 }
 
-func NewWheatherQuery(Lat, Lon float64) WheatherQuery {
+func NewWheatherQuery(Lat, Lon float32) WheatherQuery {
 	return WheatherQuery{
 		Lat,
 		Lon,
