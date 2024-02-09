@@ -2,7 +2,6 @@ package adapters
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"wheea/core/entities"
@@ -12,9 +11,9 @@ type QueryPlaceAdapter struct {
 	endpoint string
 }
 
-func NewQueryPlaceAdapter(endpoint string) *QueryPlaceAdapter {
+func NewQueryPlaceAdapter() *QueryPlaceAdapter {
 	return &QueryPlaceAdapter{
-		endpoint,
+		"https://geocoding-api.open-meteo.com/v1/search?name=%s",
 	}
 }
 
@@ -27,7 +26,7 @@ func (qpa *QueryPlaceAdapter) Query(qp entities.QueryPlace) entities.QueryPlaceA
 		return entities.QueryPlaceApiResponse{
 			Code:    http.StatusInternalServerError,
 			Results: nil,
-			Error:   err,
+			Error:   err.Error(),
 		}
 	} else {
 		defer response.Body.Close()
@@ -38,7 +37,7 @@ func (qpa *QueryPlaceAdapter) Query(qp entities.QueryPlace) entities.QueryPlaceA
 		if err := decoder.Decode(&apiresponse); err != nil {
 			return entities.QueryPlaceApiResponse{
 				Code:  http.StatusInternalServerError,
-				Error: err,
+				Error: err.Error(),
 			}
 		}
 
@@ -47,30 +46,40 @@ func (qpa *QueryPlaceAdapter) Query(qp entities.QueryPlace) entities.QueryPlaceA
 		if err, ok := apiresponse["reason"]; ok {
 			return entities.QueryPlaceApiResponse{
 				Code:  response.StatusCode,
-				Error: errors.New(err.(string)),
+				Error: err.(string),
 			}
 		} else {
 			var finalApiResponse entities.QueryPlaceApiResponse
 
 			// If everything is ok...
-			for _, m := range apiresponse["results"].([]interface{}) {
-				m := m.(map[string]interface{})
-				finalApiResponse.Results = append(finalApiResponse.Results, struct {
-					Name      string
-					Latitude  float32
-					Longitude float32
-					Country   string
-				}{
-					m["name"].(string),
-					float32(m["latitude"].(float64)),
-					float32(m["longitude"].(float64)),
-					m["country"].(string),
-				})
+			if results, ok := apiresponse["results"]; ok {
+				apiresponse = nil
+
+				for _, m := range results.([]interface{}) {
+					m := m.(map[string]interface{})
+					finalApiResponse.Results = append(finalApiResponse.Results, struct {
+						Name      string
+						Latitude  float32
+						Longitude float32
+						Country   string
+					}{
+						m["name"].(string),
+						float32(m["latitude"].(float64)),
+						float32(m["longitude"].(float64)),
+						m["country"].(string),
+					})
+				}
+
+				finalApiResponse.Code = response.StatusCode
+				return finalApiResponse
+			} else {
+				return entities.QueryPlaceApiResponse{
+					Code:    http.StatusBadRequest,
+					Results: nil,
+					Error:   "couldn't fetch city's informations: invalid city name.",
+				}
 			}
 
-			finalApiResponse.Code = response.StatusCode
-			finalApiResponse.Error = nil
-			return finalApiResponse
 		}
 	}
 }

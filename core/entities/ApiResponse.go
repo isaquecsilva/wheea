@@ -8,7 +8,7 @@ type QueryPlaceApiResponse struct {
 		Longitude float32
 		Country   string
 	}
-	Error error
+	Error string
 }
 
 type WheatherQueryApiResponse struct {
@@ -29,5 +29,5 @@ type WheatherQueryApiResponse struct {
 			Precipitation  uint
 		}
 	}
-	Error error
+	Error string
 }

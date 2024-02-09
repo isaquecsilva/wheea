@@ -10,7 +10,7 @@ import (
 
 func TestQuery(test *testing.T) {
 	test.Run("should get a valid api response", func(t *testing.T) {
-		qpadapter := NewQueryPlaceAdapter("https://geocoding-api.open-meteo.com/v1/search?name=%s")
+		qpadapter := NewQueryPlaceAdapter()
 		queryplace := entities.NewQueryPlace("Berlin")
 		response := qpadapter.Query(queryplace)
 
