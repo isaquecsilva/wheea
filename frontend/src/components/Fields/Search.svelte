@@ -1,16 +1,14 @@
 <script>
 	import { getCityInfo } from './cityrequest.js';
-	import { onMount } from 'svelte'
 
+	export let coords = {}
 	export let theme;
 
 	let cityname;
-	let container;
-
 </script>
 
-<div bind:this={container} style="--search-theme: {theme};">
-	<label>City:</label>
+<div style="--search-theme: {theme};grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};">
+	<span>City:</span>
 	<input
 		on:keyup={() => getCityInfo(cityname)}
 		bind:value={cityname}
@@ -35,7 +33,7 @@
 		z-index: 1;
 	}
 
-	label {
+	span {
 		grid-row-start: 1;
 		grid-column-start: 2;
 		font-size: 12px;
