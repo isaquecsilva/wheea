@@ -2,16 +2,19 @@
   import Search from './components/Fields/Search.svelte'
   import Theme from './components/Buttons/Theme.svelte'
   import WheatherCard from './components/Cards/WheatherCard.svelte'
-  import { themekit, getUserTheme } from './theme.js'
+  import List from './components/Cards/List.svelte'
+
+  import { themekit, getUserTheme, setComponentGridCoords } from './theme.js'
 
   export let theme = getUserTheme() || themekit.darkmode
   $: document.body.style.backgroundColor = theme;
 </script>
 
 <main>
-  <Theme id="theme" bind:theme />
-  <WheatherCard id="card" bind:theme image="" />
-  <Search id="search" bind:theme />
+  <Theme coords={setComponentGridCoords(1, 1, 1, 4)} bind:theme />
+  <WheatherCard coords={setComponentGridCoords(2, 2, 1, 4)} bind:theme image="" />
+  <List coords={setComponentGridCoords(3, 3, 2, 3)} bind:theme />
+  <Search coords={setComponentGridCoords(4, 4, 1, 4)} bind:theme />
 </main>
 
 <style type="text/css">
@@ -19,23 +22,7 @@
     display: grid;
     height: 100%;
     width:  100%;
-    grid-template-rows: 1fr 7fr 2fr;
-  }
-
-  #theme {
-    grid-row-start: 0;
-    grid-row-end: 1;
-  }
-
-  #card {
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  #search {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    height: 100vh;
-    background: red;
+    grid-template-rows: 1fr 6fr 1fr 2fr;
+    grid-template-columns: 1fr 4fr 1fr;
   }
 </style>
