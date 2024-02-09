@@ -1,4 +1,4 @@
-import { QueryWheather } from '../../wailsjs/go/main/WheeaApp.js'
+import { QueryPlaceBind } from '../../wailsjs/go/main/WheeaApp.js'
 import sweetalert2 from 'sweetalert2'
 
 const waitTime = 3 * 1000;
@@ -14,7 +14,7 @@ export function getCityInfo(cityname) {
 	}
 
 	apiCallCountdown = setTimeout(async () => {
-		let response = await QueryWheather(cityname)
+		let response = await QueryPlaceBind(cityname)
 
 		if (response.Error.length) {
 			sweetalert2.fire({

@@ -7,29 +7,43 @@
 
 	onMount(() => {
 		window.addEventListener('queryplaceresponse', event => {
+			document.getElementById('list-container').style.height = '16vh'
+
 			options = event.detail.data.reduce((accumulator, item) => {
 				(accumulator.find(el => el == `${item.Name}, ${item.Country}`) == undefined) ? accumulator.push(`${item.Name}, ${item.Country}`) : null;
 				return accumulator
 			}, [])
 		})
 	})
+
+	function queryWheather(cityname) {
+		document.getElementById('list-container').style.height = '0'
+
+		options = [];
+		console.table({
+			operation: 'api-call',
+			param: cityname,
+		})
+	}
 </script>
 
-<div style="grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};
+<div id="list-container" style="grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};
 --list-theme: {theme == '#111' ? '#333' : '#eee'};">
 	{#each options as option}
-		<p>{option}</p>
+		<p on:click={(event) => queryWheather(event.target.innerText)}>{option}</p>
 	{/each}
 </div>
 
 <style type="text/css">
 	div {
-		min-height: 16vh;
+		display: block;
+		height: 0;
 		background-color: var(--list-theme);
 		border-radius: 6px 6px 0px 0px;
-		transition: 0.5s ease-in;
+		transition: height 0.5s ease-in;
 		padding: 0;
 		overflow-y: auto;
+		position: inherit;
 	}
 
 	p {
