@@ -1,4 +1,4 @@
-import { QueryWheather } from '../../../wailsjs/go/main/WheeaApp.js'
+import { QueryWheather } from '../../wailsjs/go/main/WheeaApp.js'
 import sweetalert2 from 'sweetalert2'
 
 const waitTime = 3 * 1000;

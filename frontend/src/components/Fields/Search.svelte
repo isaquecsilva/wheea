@@ -1,5 +1,5 @@
 <script>
-	import { getCityInfo } from './cityrequest.js';
+	import { getCityInfo } from '../../js/CityRequest.js';
 
 	export let coords = {}
 	export let theme;
