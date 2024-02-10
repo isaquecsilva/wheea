@@ -20,8 +20,11 @@ func main() {
 	var queryPlaceAdapter *adapters.QueryPlaceAdapter = adapters.NewQueryPlaceAdapter()
 	queryPlaceService := app.NewQueryPlaceService(queryPlaceAdapter)
 
+	var weatherQueryAdapter *adapters.WeatherQueryAdapter = adapters.NewWeatherQueryAdapter()
+	weatherQueryService := app.NewWeatherQueryService(weatherQueryAdapter)
+
 	// Create an instance of the app structure
-	app := NewWheeaApp(&queryPlaceService)
+	app := NewWheeaApp(&queryPlaceService, &weatherQueryService)
 
 	// Create application with options
 	err := wails.Run(&options.App{
