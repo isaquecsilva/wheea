@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"wheea/backend/core/entities"
 )
 
@@ -19,7 +20,7 @@ func NewQueryPlaceAdapter() *QueryPlaceAdapter {
 
 func (qpa *QueryPlaceAdapter) Query(qp entities.QueryPlace) entities.QueryPlaceApiResponse {
 	response, err := http.Get(
-		fmt.Sprintf(qpa.endpoint, qp.CityName),
+		fmt.Sprintf(qpa.endpoint, url.QueryEscape(qp.CityName)),
 	)
 
 	if err != nil {
