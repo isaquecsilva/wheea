@@ -6,6 +6,6 @@ export function QueryPlaceBind(arg1) {
   return window['go']['main']['WheeaApp']['QueryPlaceBind'](arg1);
 }
 
-export function QueryWheatherBind(arg1, arg2) {
-  return window['go']['main']['WheeaApp']['QueryWheatherBind'](arg1, arg2);
+export function WeatherQueryBind(arg1, arg2) {
+  return window['go']['main']['WheeaApp']['WeatherQueryBind'](arg1, arg2);
 }

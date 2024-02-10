@@ -4,4 +4,4 @@ import {entities} from '../models';
 
 export function QueryPlaceBind(arg1:string):Promise<entities.QueryPlaceApiResponse>;
 
-export function QueryWheatherBind(arg1:number,arg2:number):Promise<entities.WheatherQueryApiResponse>;
+export function WeatherQueryBind(arg1:number,arg2:number):Promise<entities.WheatherQueryApiResponse>;
