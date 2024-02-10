@@ -7,14 +7,15 @@ import (
 )
 
 type WheeaApp struct {
-	qws *app.WheatherQueryService
+	qws *app.WeatherQueryService
 	qps *app.QueryPlaceService
 	ctx context.Context
 }
 
 // NewApp creates a new App application struct
-func NewWheeaApp(qps *app.QueryPlaceService) *WheeaApp {
+func NewWheeaApp(qps *app.QueryPlaceService, qws *app.WeatherQueryService) *WheeaApp {
 	return &WheeaApp{
+		qws: qws,
 		qps: qps,
 	}
 }
@@ -30,7 +31,7 @@ func (a *WheeaApp) QueryPlaceBind(cityname string) entities.QueryPlaceApiRespons
 	return a.qps.Execute(queryplace)
 }
 
-func (a *WheeaApp) QueryWheatherBind(lat, lon float32) entities.WheatherQueryApiResponse {
+func (a *WheeaApp) WeatherQueryBind(lat, lon float32) entities.WheatherQueryApiResponse {
 	wheatherquery := entities.NewWheatherQuery(lat, lon)
 	return a.qws.Query(wheatherquery)
 }
