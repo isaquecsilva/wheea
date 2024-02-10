@@ -1,5 +1,7 @@
 <script type="text/javascript">
 	import { onMount } from 'svelte'
+	import { makeWeatherQuery } from '../../js/WeatherQuery.js'
+	import sweetalert2 from 'sweetalert2'
 
 	export let options = [];
 	export let coords = {}
@@ -10,27 +12,40 @@
 			document.getElementById('list-container').style.height = '16vh'
 
 			options = event.detail.data.reduce((accumulator, item) => {
-				(accumulator.find(el => el == `${item.Name}, ${item.Country}`) == undefined) ? accumulator.push(`${item.Name}, ${item.Country}`) : null;
+				(accumulator.find(el => el == item) == undefined) ? accumulator.push(item) : null;
 				return accumulator
 			}, [])
 		})
 	})
 
-	function queryWheather(cityname) {
+	function queryWeather(event) {
+		const queryPlaceObject = JSON.parse(atob(event.target.id))
 		document.getElementById('list-container').style.height = '0'
 
 		options = [];
+
+		makeWeatherQuery(queryPlaceObject.Latitude, queryPlaceObject.Longitude)
+			.then(data => console.log(data))
+			.catch(error => {
+				sweetalert2.fire({
+					icon: 'error',
+					title: 'Error Fetching Weather Infos',
+					text: error.message,
+				})
+			})
+
 		console.table({
 			operation: 'api-call',
-			param: cityname,
+			param: queryPlaceObject.Name,
 		})
 	}
 </script>
 
-<div id="list-container" style="grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};
---list-theme: {theme == '#111' ? '#333' : '#eee'};">
+<div id="list-container" style="grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};--list-theme: {theme == '#111' ? '#333' : '#eee'};">
 	{#each options as option}
-		<p on:click={(event) => queryWheather(event.target.innerText)}>{option}</p>
+		<p
+		id={btoa(JSON.stringify(option))} 
+		on:click={event => { queryWeather(event)}}>{`${option.Name}, ${option.Country}`}</p>
 	{/each}
 </div>
 
