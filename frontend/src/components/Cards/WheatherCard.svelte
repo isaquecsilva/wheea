@@ -1,7 +1,20 @@
 <script>
+	import { weatherCodeToImage } from '../../js/utils/WeatherCardUtils.js';
+
 	export let theme;
 	export let image = '';
 	export let coords = {}
+
+	export let weatherdata = {
+		Name: '',
+		Country: '',
+		WeatherType: -1,
+		WindSpeed: 0,
+		Precipitation: 0,
+		MinTemperature: 0,
+		Temperature: 0,
+		MaxTemperature: 0,
+	}
 </script>
 
 <div id="maincontainer" style="--wheather-card-theme: {theme};grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};">
@@ -10,18 +23,18 @@
 	{:else}
 		<div>
 			<div class="elements">
-				<h6>Wind: 18 km/h</h6>
-				<h6>Precipitation: 16%</h6>
+				<h6>Wind: {weatherdata.WindSpeed} km/h</h6>
+				<h6>Precipitation: {weatherdata.Precipitation}%</h6>
 			</div>
 
-			<img src={image} width="160" height="160" alt="wheather-image" />
+			<img src={weatherCodeToImage(weatherdata.WeatherType)} width="160" height="160" alt="wheather-image" />
 			<div id="inner">
-				<h4>Tokyo, Japan</h4>
+				<h4>{weatherdata.Name}, {weatherdata.Country}</h4>
 				<div id="info">
 					<div class="elements">
-						<h6>Min: 18º</h6>
-						<h6>Current: 32º</h6>
-						<h6>Max: 33º</h6>
+						<h6>Min: {weatherdata.MinTemperature}º</h6>
+						<h6>Current: {weatherdata.Temperature}º</h6>
+						<h6>Max: {weatherdata.MaxTemperature}º</h6>
 					</div>			
 				</div>
 			</div>

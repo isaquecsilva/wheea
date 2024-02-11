@@ -3,23 +3,35 @@
   import Theme from './components/Buttons/Theme.svelte'
   import WheatherCard from './components/Cards/WheatherCard.svelte'
   import ChildWeatherCard from './components/Cards/ChildWeatherCard.svelte'
-
   import { themekit, getUserTheme, setComponentGridCoords } from './theme.js'
+  import { onMount } from 'svelte'
+  import { sunny } from './js/Assets'
 
   export let theme = getUserTheme() || themekit.darkmode
   $: document.body.style.backgroundColor = theme;
+
+
+  var weatherdata = null;
+  let image = ''
+
+  onMount(() => {
+    window.addEventListener('weatherqueryresponse', function(event) {
+      weatherdata = event.detail.data.Result.Today;
+      image = sunny;
+    })
+  })
 </script>
 
 <main>
   <Theme coords={setComponentGridCoords(1, 1, 1, 4)} bind:theme />
-  <WheatherCard coords={setComponentGridCoords(2, 2, 2, 3)} bind:theme image="src/assets/images/illustrations/sun_cloudy_misty.png" />
+  <WheatherCard coords={setComponentGridCoords(2, 2, 2, 3)} bind:theme {image} {weatherdata} />
   <div id="nextdays">
+    <!-- <ChildWeatherCard />
     <ChildWeatherCard />
     <ChildWeatherCard />
     <ChildWeatherCard />
     <ChildWeatherCard />
-    <ChildWeatherCard />
-    <ChildWeatherCard />
+    <ChildWeatherCard /> -->
   </div>
   <Search coords={setComponentGridCoords(4, 4, 1, 4)} bind:theme />
 </main>

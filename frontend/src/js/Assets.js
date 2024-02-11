@@ -1,4 +1,4 @@
-import sunnny from '../assets/images/illustrations/sunnny.png'
+import sunny from '../assets/images/illustrations/sunnny.png'
 import sun_cloudy from '../assets/images/illustrations/sun_cloudy.png'
 import sun_cloudy_misty from '../assets/images/illustrations/sun_cloudy_misty.png'
 import sun_rain from '../assets/images/illustrations/sun_rain.png'
@@ -7,7 +7,7 @@ import cloud_fog from '../assets/images/illustrations/cloud_fog.png'
 import cloudy_rain from '../assets/images/illustrations/cloudy_rain.png'
 
 export {
-    sunnny,
+    sunny,
     sun_cloudy,
     sun_cloudy_misty,
     sun_rain,

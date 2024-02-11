@@ -15,9 +15,6 @@ import (
 //go:embed all:frontend/dist
 var sourcecode embed.FS
 
-//go:embed all:frontend/assets
-var assets embed.FS
-
 func main() {
 	// Instanciating services and adapters
 	var queryPlaceAdapter *adapters.QueryPlaceAdapter = adapters.NewQueryPlaceAdapter()

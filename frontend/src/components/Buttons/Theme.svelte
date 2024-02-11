@@ -18,7 +18,7 @@
 </script>
 <div style="grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};">
 	<button on:click={changeTheme}>
-		<img src={icon} {...size} />
+		<img src={icon} {...size} alt=""/>
 	</button>
 </div>
 
