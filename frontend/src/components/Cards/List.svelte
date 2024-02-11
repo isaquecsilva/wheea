@@ -19,7 +19,7 @@
 	})
 
 	function queryWeather(event) {
-		const queryPlaceObject = JSON.parse(atob(event.target.id))
+		const queryPlaceObject = JSON.parse(decodeURIComponent(event.target.id))
 		document.getElementById('list-container').style.height = '0'
 
 		options = [];
@@ -39,12 +39,20 @@
 			param: queryPlaceObject.Name,
 		})
 	}
+
+	function toHex(obj) {
+		return obj.split('')
+					.reduce((acc, item) => {
+						acc += '%'+item.charCodeAt(0).toString(16);
+						return acc
+					}, "")
+	}
 </script>
 
 <div id="list-container" style="grid-row-start:{coords.rs};grid-row-end:{coords.re};grid-column-start:{coords.cs};grid-column-end:{coords.ce};--list-theme: {theme == '#111' ? '#333' : '#eee'};">
 	{#each options as option}
 		<p
-		id={btoa(JSON.stringify(option))} 
+		id={toHex(JSON.stringify(option))} 
 		on:click={event => { queryWeather(event)}}>{`${option.Name}, ${option.Country}`}</p>
 	{/each}
 </div>
