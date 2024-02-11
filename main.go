@@ -13,6 +13,9 @@ import (
 )
 
 //go:embed all:frontend/dist
+var sourcecode embed.FS
+
+//go:embed all:frontend/assets
 var assets embed.FS
 
 func main() {
@@ -29,10 +32,10 @@ func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
 		Title:      "wheea",
-		MinWidth:   344,
-		MinHeight:  370,
-		Width:      344,
-		Height:     370,
+		MinWidth:   500,
+		MinHeight:  500,
+		Width:      500,
+		Height:     500,
 		MaxWidth:   600,
 		MaxHeight:  600,
 		Fullscreen: false,
@@ -40,7 +43,7 @@ func main() {
 			IsZoomControlEnabled: false,
 		},
 		AssetServer: &assetserver.Options{
-			Assets: assets,
+			Assets: sourcecode,
 		},
 		OnStartup: app.startup,
 		Bind: []interface{}{

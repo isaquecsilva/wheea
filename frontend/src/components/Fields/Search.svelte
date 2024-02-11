@@ -12,8 +12,7 @@
 	<input
 		on:keyup={() => getCityInfo(cityname)}
 		bind:value={cityname}
-		placeholder="Tokyo"
-	/>
+		placeholder="Tokyo"/>
 </div>
 
 <style>
