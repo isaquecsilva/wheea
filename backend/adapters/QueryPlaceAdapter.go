@@ -58,17 +58,20 @@ func (qpa *QueryPlaceAdapter) Query(qp entities.QueryPlace) entities.QueryPlaceA
 
 				for _, m := range results.([]interface{}) {
 					m := m.(map[string]interface{})
-					finalApiResponse.Results = append(finalApiResponse.Results, struct {
-						Name      string
-						Latitude  float32
-						Longitude float32
-						Country   string
-					}{
-						m["name"].(string),
-						float32(m["latitude"].(float64)),
-						float32(m["longitude"].(float64)),
-						m["country"].(string),
-					})
+
+					if country, ok := m["country"]; ok {
+						finalApiResponse.Results = append(finalApiResponse.Results, struct {
+							Name      string
+							Latitude  float32
+							Longitude float32
+							Country   string
+						}{
+							m["name"].(string),
+							float32(m["latitude"].(float64)),
+							float32(m["longitude"].(float64)),
+							country.(string),
+						})
+					}
 				}
 
 				finalApiResponse.Code = response.StatusCode
