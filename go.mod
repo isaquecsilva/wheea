@@ -1,8 +1,8 @@
 module wheea
 
-go 1.21
+go 1.20
 
-toolchain go1.21.5
+// toolchain go1.20.5
 
 require (
 	github.com/innotechdevops/openmeteo v1.0.1

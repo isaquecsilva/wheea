@@ -8,7 +8,7 @@
 	
 	const size = { width: 20, height: 20, }
 	let icon = getUserTheme() == themekit.lightmode ? sun : moon;
-	
+
 	// Change application current theme
 	function changeTheme() {
 		icon = icon == sun ? moon : sun;
