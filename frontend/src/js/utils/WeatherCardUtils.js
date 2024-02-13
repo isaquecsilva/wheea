@@ -35,7 +35,6 @@ export function weatherCodeToImage(weathercode) {
         case weathercode >= 95:
             return sun_rain_bolt
         default:
-            console.log('chegou aqui')
             return sunny
     }
 }
