@@ -21,18 +21,16 @@ Simply, type the city name you want to fetch in the search field, and done.
 
 **NodeJS:** 21.3.0
 
-**Wails:** 2.7.1
-
 *Obs:* Some lower versions may also work.
 
 ## Getting Started
-`go install github.com/wailsapp/wails/v2/cmd/wails@v2.7.1`
-
 `go mod tidy`
 
 `cd frontend && npm install`
 
-*At root dir run:* **wails dev**
+`go install github.com/wailsapp/wails/v2/cmd/wails@latest`
+
+*At project's root dir, run:* **wails dev**
 
 ## Assets
 Icons and illustrations from [iconfinder](https://www.iconfinder.com/) by *[Laura Reen](https://www.iconfinder.com/search?designer=laurareen)*.
