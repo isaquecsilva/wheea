@@ -1,8 +1,18 @@
+<script>
+    import { weatherCodeToImage } from '../../js/utils/WeatherCardUtils'
+    export let weatherData = {
+        MaxTemperature: 0,
+        MinTemperature: 0,
+        WeatherType: 0,
+    }
+
+</script>
+
 <div id="container">
-    <img src="src/assets/images/illustrations/sun_cloudy_misty.png" alt="">
+    <img src="{weatherCodeToImage(weatherData.WeatherType)}" alt="">
     <div>
-        <h6>Min: 15º</h6>
-        <h6>Max: 29º</h6>
+        <h6>Min: {weatherData.MinTemperature}º</h6>
+        <h6>Max: {weatherData.MaxTemperature}º</h6>
     </div>
 </div>
 
