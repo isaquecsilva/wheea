@@ -6,7 +6,7 @@
 
 # Wheea
 
-Wheea is Desktop App for fetching wheather informations. Its built using [Wails](https://wails.io/) framework for creating desktop apps using Web Techs.
+Wheea is a Desktop App for fetching weather informations. Its built using [Wails](https://wails.io/) framework for creating desktop apps using Web Techs.
 
 ## How to use it
 
