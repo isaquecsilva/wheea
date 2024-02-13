@@ -19,9 +19,7 @@
     window.addEventListener('weatherqueryresponse', function(event) {
       weatherdata = event.detail.data.Result.Today;
       weatherNextDaysData = event.detail.data.Result.NextDays;
-      console.log(weatherdata.WeatherType);
       image = weatherCodeToImage(weatherdata.WeatherType);
-      console.log(image)
     })
   })
 </script>
