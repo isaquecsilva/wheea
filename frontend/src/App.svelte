@@ -6,10 +6,10 @@
   import { themekit, getUserTheme, setComponentGridCoords } from './theme.js'
   import { onMount } from 'svelte'
   import { weatherCodeToImage } from './js/utils/WeatherCardUtils';
+  import { makeWeatherQuery } from './js/WeatherQuery'
 
   export let theme = getUserTheme() || themekit.darkmode
   $: document.body.style.backgroundColor = theme;
-
 
   var weatherdata = null;
   var weatherNextDaysData = [];
@@ -21,7 +21,14 @@
       weatherNextDaysData = event.detail.data.Result.NextDays;
       image = weatherCodeToImage(weatherdata.WeatherType);
     })
-  })
+
+    var lastFetchedCity = localStorage.getItem("lastcity")
+    if (lastFetchedCity) {
+      let lastcity = JSON.parse(lastFetchedCity);
+      console.log(lastcity)
+      makeWeatherQuery(lastcity)
+    }
+  })  
 </script>
 
 <main>
