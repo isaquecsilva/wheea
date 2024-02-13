@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # wheea
 Wheea is Desktop App for fetching wheather informations.
 =======
@@ -30,4 +29,3 @@ Icons and illustrations from [iconfinder](https://www.iconfinder.com/) by *[Laur
  - *[Svelte](https://svelte.dev/)*;
  - *[sweetalert2](https://sweetalert2.github.io/)*;
  - *[Wails](https://wails.io/)*;
->>>>>>> 21149c6ef1f44f972d24fcb0da073feeb250f717
