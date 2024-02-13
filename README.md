@@ -1,6 +1,3 @@
-# wheea
-Wheea is Desktop App for fetching wheather informations.
-=======
 <p align="center">
     <img src="build/appicon.png" width=250/>
 </p>
