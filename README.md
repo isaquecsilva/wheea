@@ -36,7 +36,7 @@ Simply, type the city name you want to fetch in the search field, and done.
 Icons and illustrations from [iconfinder](https://www.iconfinder.com/) by *[Laura Reen](https://www.iconfinder.com/search?designer=laurareen)*.
 
 ## API
- Wheea uses free api for geocoding and weather query provided by [open-meteo](https://open-meteo.com/). Currently, they give **10.000** requests for free.
+ Wheea uses free api for geocoding and weather query provided by [open-meteo](https://open-meteo.com/). Currently, they give **10.000** requests for free, with restriction for non-commercial use.
 
 ## Stack
  - *[Svelte](https://svelte.dev/)*;
